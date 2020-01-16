@@ -1,0 +1,192 @@
+﻿@model screenshare3.Models.JDADebugDeviceInfo
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>JDADebugDeviceInfo</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.DeviceName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DeviceName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DeviceType)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DeviceType)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Model)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Model)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Manufacturer)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Manufacturer)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DevicePlatform)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DevicePlatform)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DeviceVersion)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DeviceVersion)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.BugId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.BugId)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CurrentDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CurrentDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.vession)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.vession)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.build)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.build)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreenResolution)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreenResolution)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.batterylevel)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.batterylevel)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DeviceLang)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DeviceLang)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CurrentNetwork)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CurrentNetwork)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CurrentProfile)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CurrentProfile)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.MaxCPU)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MaxCPU)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.MaxMemory)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MaxMemory)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.MaxDataFreme)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MaxDataFreme)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.MaxVirtualMemory)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MaxVirtualMemory)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.MaxSpace)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MaxSpace)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

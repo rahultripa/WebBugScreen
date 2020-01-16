@@ -1,0 +1,55 @@
+@model screenshare3.Models.ScreenImageInfo
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    <h4>ScreenImageInfo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+      <h4>ScreenImage</h4>
+      <hr />
+      <dl class="dl-horizontal">
+
+
+
+
+        <dl class="dl-horizontal">
+          <img src="@String.Format("data:image/jpg;base64,{0}", Model.Data)" height="320" width="180" />
+          @*<img src="@Url.Action("RenderImage", new { id = Model.Data})" />*@
+        </dl>
+        
+      </dl>
+      <dt>
+        @Html.DisplayNameFor(model => model.imageScreen)
+      </dt>
+
+      <dd>
+        @Html.DisplayFor(model => model.imageScreen)
+      </dd>
+
+      <dt>
+        @Html.DisplayNameFor(model => model.Data)
+      </dt>
+
+      <dd>
+        @Html.DisplayFor(model => model.Data)
+      </dd>
+
+      <dt>
+        @Html.DisplayNameFor(model => model.textRecognisaion)
+      </dt>
+
+      <dd>
+        @Html.DisplayFor(model => model.textRecognisaion)
+      </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

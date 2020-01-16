@@ -1,0 +1,831 @@
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width" />
+  <title>Index</title>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">
+  </script>
+  <script type="text/javascript">
+    google.charts.load('current', { packages: ['corechart', 'line'] });
+  </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="~/Scripts/jquery-1.10.2.js"></script>
+  <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+  <link href="~/Scripts/sb-admin-2.min.css" rel="stylesheet">
+  <style>
+    #rcorners {
+      border-radius: 25px;
+      border: 2px solid #73AD21;
+      padding: 10px;
+      align-items: center;
+      align-content: center;
+      padding: 20px;
+      width: 290px;
+      height: 510px;
+    }
+    #doit {
+       background: blue;
+  
+}
+
+     .parent{
+    position: relative;
+}
+.over-img{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+}
+  </style>
+  <script>
+    var data;
+    var data1;
+    var IsPlay = false;
+    var imcr = 0;
+    var thisOne;
+    
+    var getQueryString = function ( field, url ) {
+	var href = url ? url : window.location.href;
+	var reg = new RegExp( '[?&]' + field + '=([^&#]*)', 'i' );
+	var string = reg.exec(href);
+	return string ? string[1] : null;
+    };
+    function gotoEdit() {
+        location.href = "../JDADebugInfoesMvc/Edit/" + thisOne;
+     
+      window.location(url);
+    }
+    function send_with_ajax() {
+
+      var image = document.getElementById("get_img");
+      // console.log(data[1].ScreenShot);
+      var prev = imcr;
+       var steps = imcr++;
+      image.src = "data:image/jpg;base64," + data1[steps].ScreenShot;
+    //  var userSteps = document.getElementById("userSteps");
+      var myImg1 = document.getElementById("img" + steps.toString());
+      myImg1.src = "../Images/MobileIconSelectd.png";
+       var myImg = document.getElementById("img" + (steps-1).toString());
+      myImg.src = "../Images/MobileIcon.png";
+       var IterationNo = document.getElementById("IterationNo");
+            IterationNo.innerHTML = steps;
+     var userSteps = document.getElementById("userSteps");
+
+            userSteps.innerHTML = data1[steps].ActivityData.replace(/Time /g, "\n\r<p><p><span style='color: #008000;'><strong>Time :</strong></span>\n\r").replace(/Funcation /g, "\n\r<p><span style='color: #ff0000;'><strong>Function :</strong></span></p>\n\r").replace(/ViewModel /g, "<p><span style='color: #0000ff;'><strong>ViewModel :</strong></span></p>").replace(/Services Funcation /g, "\n\r<p><span style='color: #ff9900;'><strong>Services Funcation :</strong></span></p>\n\r").replace(/Page Name :/g, "\n\r<p><span style='color: #800080;'><strong>Page Name :</strong></span></p>\n\r");
+
+            var NetworkSteps = document.getElementById("NetworkSteps");
+            NetworkSteps.innerHTML = data1[steps].NetworkData.replace(/data /g, "\n\r<p><span style='color: #008000;'><strong>Data :</strong></span>\n\r").replace(/Time /g, "<p><p><span style='color: #008000;'><strong>Time :</strong></span>\n\r").replace(/Get/g, "\n\r<p><span style='color: #ff0000;'><strong>Api Get Funcation :</strong></span></p>\n\r").replace(/POST /g, "<p><span style='color: #0000ff;'><strong>Api POST Funcation :</strong></span></p>").replace(/PUT/g, "\n\r<p><span style='color: #ff9900;'><strong>Api PUT Funcation :</strong></span></p>\n\r").replace(/DELETE/g, "\n\r<p><span style='color: #800080;'><strong>Api DELETE Funcation:</strong></span></p>\n\r");
+       
+    }
+    function send_with_Play() {
+
+      var image = document.getElementById("btn_play");
+      if (!IsPlay) {
+        image.src = "../Images/pause.png";
+        myVar = setInterval('play()', 2000);
+        IsPlay = true;
+      } else {
+
+        image.src = "../Images/48-48-f3e9dae7cdd03d06915cadd830e75935.png";
+       // setInterval('play()', 2000);
+        clearInterval(myVar);
+        IsPlay = false;
+      }
+       
+    }
+    function play() {
+
+
+        var image = document.getElementById("get_img");
+         
+          var steps = ++imcr;
+          image.src = "data:image/jpg;base64," + data1[steps].ScreenShot;
+          var myImg1 = document.getElementById("img" + steps.toString());
+      myImg1.src = "../Images/MobileIconSelectd.png";
+        
+      var myImg = document.getElementById("img" + (steps - 1).toString());
+      if (myImg != null)
+          myImg.src = "../Images/MobileIcon.png";
+          var IterationNo = document.getElementById("IterationNo");
+          IterationNo.innerHTML = steps;
+          var userSteps = document.getElementById("userSteps");
+      var IterationTime = document.getElementById("IterationTime");
+      IterationTime.innerHTML = data1[steps].CurrentDate;
+          userSteps.innerHTML = data1[steps].ActivityData.replace(/Time /g, "\n\r<p><p><span style='color: #008000;'><strong>Time :</strong></span>\n\r").replace(/Funcation /g, "\n\r<p><span style='color: #ff0000;'><strong>Function :</strong></span></p>\n\r").replace(/ViewModel /g, "<p><span style='color: #0000ff;'><strong>ViewModel :</strong></span></p>").replace(/Services Funcation /g, "\n\r<p><span style='color: #ff9900;'><strong>Services Funcation :</strong></span></p>\n\r").replace(/Page Name :/g, "\n\r<p><span style='color: #800080;'><strong>Page Name :</strong></span></p>\n\r");
+
+          var NetworkSteps = document.getElementById("NetworkSteps");
+          NetworkSteps.innerHTML = data1[steps].NetworkData.replace(/data /g, "\n\r<p><span style='color: #008000;'><strong>Data :</strong></span>\n\r").replace(/Time /g, "<p><p><span style='color: #008000;'><strong>Time :</strong></span>\n\r").replace(/Get/g, "\n\r<p><span style='color: #ff0000;'><strong>Api Get Funcation :</strong></span></p>\n\r").replace(/POST /g, "<p><span style='color: #0000ff;'><strong>Api POST Funcation :</strong></span></p>").replace(/PUT/g, "\n\r<p><span style='color: #ff9900;'><strong>Api PUT Funcation :</strong></span></p>\n\r").replace(/DELETE/g, "\n\r<p><span style='color: #800080;'><strong>Api DELETE Funcation:</strong></span></p>\n\r");
+    
+    }
+    function send_with_ajaxPrev() {
+
+      var image = document.getElementById("get_img");
+      // console.log(data[1].ScreenShot);
+         
+    var steps = imcr--;
+      image.src = "data:image/jpg;base64," + data1[steps].ScreenShot;
+       var userSteps = document.getElementById("userSteps");
+      var myImg = document.getElementById("img" + steps.toString());
+
+      myImg.src = "../Images/MobileIconSelectd.png";
+          var myImg1 = document.getElementById("img" + (steps+1).toString());
+      myImg1.src = "../Images/MobileIcon.png";
+      var IterationNo = document.getElementById("IterationNo");
+      IterationNo.innerHTML = steps;
+      var IterationTime = document.getElementById("IterationTime");
+      IterationTime.innerHTML = data1[steps].CurrentDate;
+            userSteps.innerHTML = data1[steps].ActivityData.replace(/Time /g, "\n\r<p><p><span style='color: #008000;'><strong>Time :</strong></span>\n\r").replace(/Funcation /g, "\n\r<p><span style='color: #ff0000;'><strong>Function :</strong></span></p>\n\r").replace(/ViewModel /g, "<p><span style='color: #0000ff;'><strong>ViewModel :</strong></span></p>").replace(/Services Funcation /g, "\n\r<p><span style='color: #ff9900;'><strong>Services Funcation :</strong></span></p>\n\r").replace(/Page Name :/g, "\n\r<p><span style='color: #800080;'><strong>Page Name :</strong></span></p>\n\r");
+
+            var NetworkSteps = document.getElementById("NetworkSteps");
+            NetworkSteps.innerHTML = data1[steps].NetworkData.replace(/data /g, "\n\r<p><span style='color: #008000;'><strong>Data :</strong></span>\n\r").replace(/Time /g, "<p><p><span style='color: #008000;'><strong>Time :</strong></span>\n\r").replace(/Get/g, "\n\r<p><span style='color: #ff0000;'><strong>Api Get Funcation :</strong></span></p>\n\r").replace(/POST /g, "<p><span style='color: #0000ff;'><strong>Api POST Funcation :</strong></span></p>").replace(/PUT/g, "\n\r<p><span style='color: #ff9900;'><strong>Api PUT Funcation :</strong></span></p>\n\r").replace(/DELETE/g, "\n\r<p><span style='color: #800080;'><strong>Api DELETE Funcation:</strong></span></p>\n\r");
+       }
+
+    $(document).ready(function () {
+       thisOne = getQueryString('bugId');
+      console.log("Bug Id " + thisOne);
+       
+      $.ajax('https://screenshare.azurewebsites.net/api/JDADebugActivityInfoes/'+thisOne,
+        {
+          dataType: 'json', // type of response data
+          // timeout milliseconds
+          success: function (data) {   // success callback function
+            data1 = data;
+            console.log(data1[1].ScreenShot);
+           
+            var image = document.getElementById("get_img");
+            //image.src = "data:image/jpg;base64," + data1[imcr++].ScreenShot;
+            var steps = 1;
+      image.src = "data:image/jpg;base64," + data1[steps].ScreenShot;
+      var userSteps = document.getElementById("userSteps");
+
+            userSteps.innerHTML = data1[steps].ActivityData.replace(/Time /g, "\n\r<p><p><span style='color: #008000;'><strong>Time :</strong></span>\n\r").replace(/Funcation /g, "\n\r<p><span style='color: #ff0000;'><strong>Function :</strong></span></p>\n\r").replace(/ViewModel /g, "<p><span style='color: #0000ff;'><strong>ViewModel :</strong></span></p>").replace(/Services Funcation /g, "\n\r<p><span style='color: #ff9900;'><strong>Services Funcation :</strong></span></p>\n\r").replace(/Page Name :/g, "\n\r<p><span style='color: #800080;'><strong>Page Name :</strong></span></p>\n\r");
+
+            var NetworkSteps = document.getElementById("NetworkSteps");
+            NetworkSteps.innerHTML = data1[steps].NetworkData.replace(/data /g, "\n\r<p><span style='color: #008000;'><strong>Data :</strong></span>\n\r").replace(/Time /g, "<p><p><span style='color: #008000;'><strong>Time :</strong></span>\n\r").replace(/Get/g, "\n\r<p><span style='color: #ff0000;'><strong>Api Get Funcation :</strong></span></p>\n\r").replace(/POST /g, "<p><span style='color: #0000ff;'><strong>Api POST Funcation :</strong></span></p>").replace(/PUT/g, "\n\r<p><span style='color: #ff9900;'><strong>Api PUT Funcation :</strong></span></p>\n\r").replace(/DELETE/g, "\n\r<p><span style='color: #800080;'><strong>Api DELETE Funcation:</strong></span></p>\n\r");
+      // Define the chart to be drawn.
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Time');
+            data.addColumn('number', 'CPU');
+
+     var datamu = new google.visualization.DataTable();
+      datamu.addColumn('string', 'Time');
+            datamu.addColumn('number', 'MU');
+
+
+  var datavm = new google.visualization.DataTable();
+      datavm.addColumn('string', 'Time');
+            datavm.addColumn('number', 'VM');
+            var IterationTotal = document.getElementById("IterationTotal");
+            IterationTotal.innerHTML = data1.length;
+              var IterationNo = document.getElementById("IterationNo");
+            IterationNo.innerHTML = steps;
+            var IterationTime = document.getElementById("IterationTime");
+      IterationTime.innerHTML = data1[steps].CurrentDate;
+            for (var i = 1; i < data1.length; i++) {
+              data.addRow([data1[i].CurrentDate.substring(11, 19).toString(), parseFloat(data1[i].CPUUses)]);
+              datamu.addRow([data1[i].CurrentDate.substring(11, 19).toString(), parseFloat(data1[i].MemoryUses)]);
+               datavm.addRow([data1[i].CurrentDate.substring(11, 19).toString(), parseFloat(data1[i].VirtualMemory)]);
+              var elem = document.createElement("img");
+              elem.setAttribute("id", "img" + i.toString());
+              //
+              if (i == 1)
+                elem.setAttribute("src", "../Images/MobileIconSelectd.png");
+              else
+                 elem.setAttribute("src", "../Images/MobileIcon.png");
+              if (data1[i].DeviceOrientation != "Portrait") {
+                elem.style.transform = 'rotate(90deg)';
+                elem.style.marginLeft = "10px";
+              }
+              else {
+                 elem.style.marginTop = "10px";
+              }
+             // elem.setAttribute("border", "5px");
+              //elem.style.border = "5px";
+              elem.style.backgroundColor = "red"; 
+              //elem.style.margin = "10px";
+             // elem.setAttribute("Tag", i.toString());
+
+elem.setAttribute("height", "50");
+elem.setAttribute("width", "50");
+elem.setAttribute("alt", "Flower");
+document.getElementById("placehere").appendChild(elem);
+            }
+                //  data.addRow([i.toString(), 7.0]);  
+      //data.addRows([
+      //  ['Jan', 7.0],
+      //  ['Feb', 6.9],
+      //  ['Mar', 9.5],
+      //  ['Apr', 14.5],
+      //  ['May', 18.2],
+      //  ['Jun', 21.5],
+
+      //  ['Jul', 25.2],
+      //  ['Aug', 26.5],
+      //  ['Sep', 23.3],
+      //  ['Oct', 18.3],
+      //  ['Nov', 13.9],
+      //  ['Dec', 9.6]
+      //]);
+
+      // Set chart options
+           
+      var options1 = {
+        'title': '',
+        hAxis: {
+          title: 'Time',
+          textStyle: {
+            color: '#01579b',
+            fontSize: 6,
+            fontName: 'Arial',
+            bold: true,
+            italic: true
+          },
+
+          titleTextStyle: {
+            color: '#01579b',
+            fontSize: 8,
+            fontName: 'Arial',
+            bold: false,
+            italic: true
+          }
+        },
+
+        vAxis: {
+          title: 'MB',
+          textStyle: {
+            color: '#1a237e',
+            fontSize: 8,
+            bold: true
+          },
+          titleTextStyle: {
+            color: '#1a237e',
+            fontSize: 8,
+            bold: true
+          }
+        },
+
+        'width': 300,
+        'height': 200,
+        colors: ['#a52714', '#0000ff', '#ff0000', '#00ff00']
+            };
+            var options = {
+        'title': '',
+        hAxis: {
+          title: 'Time',
+          textStyle: {
+            color: '#01579b',
+            fontSize: 6,
+            fontName: 'Arial',
+            bold: true,
+            italic: true
+          },
+
+          titleTextStyle: {
+            color: '#01579b',
+            fontSize: 6,
+            fontName: 'Arial',
+            bold: false,
+            italic: true
+          }
+        },
+
+        vAxis: {
+          title: 'MB',
+          textStyle: {
+            color: '#1a237e',
+            fontSize: 8,
+            bold: true
+          },
+          titleTextStyle: {
+            color: '#1a237e',
+            fontSize: 8,
+            bold: true
+          }
+        },
+
+        'width': 300,
+              'height': 200,
+
+
+        colors: [ '#0000ff', '#ff0000', '#00ff00']
+            };
+
+            var options2 = {
+        'title': '',
+        hAxis: {
+          title: 'Time',
+          textStyle: {
+            color: '#01579b',
+            fontSize: 6,
+            fontName: 'Arial',
+            bold: true,
+            italic: true
+          },
+
+          titleTextStyle: {
+            color: '#01579b',
+            fontSize: 8,
+            fontName: 'Arial',
+            bold: false,
+            italic: true
+          }
+        },
+
+        vAxis: {
+          title: 'MB',
+          textStyle: {
+            color: '#1a237e',
+            fontSize: 8,
+            bold: true
+          },
+          titleTextStyle: {
+            color: '#1a237e',
+            fontSize: 8,
+            bold: true
+          }
+        },
+
+        'width': 300,
+        'height': 200,
+        colors: [ '#ff0000', '#00ff00']
+            };
+      // Instantiate and draw the chart.
+            var chart = new google.visualization.LineChart(document.getElementById('container'));
+            var chart1 = new google.visualization.LineChart(document.getElementById('containermu'));
+            var chart2 = new google.visualization.LineChart(document.getElementById('containervm'));
+            chart.draw(data, options);
+            chart1.draw(datamu, options1);
+            chart2.draw(datavm, options2);
+          },
+         error: function (jqXhr, textStatus, errorMessage) { // error callback
+            $('p').append('Error: ' + errorMessage);
+         },     // });
+       
+     
+          
+          
+
+        });
+     //
+     // chart2.draw(data, options);
+     //     },
+     //     error: function (jqXhr, textStatus, errorMessage) { // error callback
+     //       $('p').append('Error: ' + errorMessage);
+     //     }
+
+     //   });
+
+     
+
+      $.ajax('https://screenshare.azurewebsites.net/api/JDADebugDeviceInfoes/'+thisOne,
+        {
+          dataType: 'json', // type of response data
+          // timeout milliseconds
+          success: function (data) {   // success callback function
+            console.log(data.vession);
+
+            document.getElementById("AppVersion").innerText = data.vession;
+            document.getElementById("version").innerText = data.build;
+            document.getElementById("Plateform").innerText = data.DevicePlatform;
+            document.getElementById("DeviceType").innerText = data.DeviceType;
+            document.getElementById("DeviceName").innerText = data.DeviceName;
+            document.getElementById("DeviceVersion").innerText = data.DeviceVersion;
+            document.getElementById("Model").innerText = data.Model;
+            document.getElementById("Manufacturer").innerText = data.Manufacturer;
+            document.getElementById("ScreenResolution").innerText = data.ScreenResolution;
+            document.getElementById("batterylevel").innerText = parseFloat(data.batterylevel) * 100 + "%";
+            document.getElementById("DeviceLang").innerText = data.DeviceLang;
+            document.getElementById("CurrentNetwork").innerText = data.CurrentNetwork;
+            document.getElementById("CurrentProfile").innerText = data.CurrentProfile;
+
+          },
+          error: function (jqXhr, textStatus, errorMessage) { // error callback
+            $('p').append('Error: ' + errorMessage);
+          }
+
+        });
+       $.ajax('https://screenshare.azurewebsites.net/api/JDADebugInfoes/'+thisOne,
+        {
+          dataType: 'json', // type of response data
+          // timeout milliseconds
+          success: function (data) {   // success callback function
+            console.log(data.vession);
+
+            document.getElementById("BugId").innerText = data.ID;
+             document.getElementById("BugId1").innerText = data.ID;
+            document.getElementById("BugName").innerText = data.BugName;
+            document.getElementById("ClientName").innerText = data.ClientName;
+            document.getElementById("Cdate").innerText = data.CurrentDate;
+            document.getElementById("CreatedBy").innerText = data.CreatedBy;
+           
+
+          },
+          error: function (jqXhr, textStatus, errorMessage) { // error callback
+            $('p').append('Error: ' + errorMessage);
+          }
+
+        });
+
+    });
+
+
+  </script>
+  <script language="JavaScript">
+    function drawChart() {
+    }
+    google.charts.setOnLoadCallback(drawChart);
+  </script>
+
+</head>
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <!-- Topbar Search -->
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-primary"  type="button">
+                  <i class="fas fa-search fa-sm"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Settings
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Activity Log
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Dashboard&nbsp;&nbsp; Bug Id&nbsp;&nbsp;#  <label id="BugId1"></label>  </h1>
+          
+            <input type="submit" value="Edit Bug" class="btn btn-primary" onclick="gotoEdit()" />
+           
+          </div>
+
+          <!-- Content Row -->
+          <!-- Content Row -->
+          
+
+          <!-- Content Row -->
+          <div class="row">
+            <div  class="col-lg-4 mb-4">
+              <div class="card shadow mb-4 align-content-center">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Screen Overview </h6>
+
+                </div>
+                <!-- Card Body -->
+                <div style="align-content:center" >
+                  <div class="card-body"  height="520" width="290">
+                    <div class="parent">
+                      <img src="~/Images/iPhone.png" height="628" style="align-content:center;"  width="330"  />
+                      <img id="get_img" style="align-content:center;margin-left:10%; margin-top:12%;"  height="480" width="240" class="over-img" />
+                    </div>
+                    @*<div id="doit" style="padding:10px" >
+
+      <img id="get_img" style="align-content:center;" src="~/Images/AndrodImg.png" height="480" width="240" />
+
+    </div>*@
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Content Column -->
+            <div class="col-lg-4 mb-4">
+
+              <!-- Project Card Example -->
+              <div class="card shadow mb-4" style="height:720px">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">User's Step</h6>
+
+                </div>
+                <div class="card-body" style='overflow:auto;height:400px;'>
+                  <label id="userSteps"></label>
+                </div>
+              </div>
+
+              <!-- Color System -->
+            </div>
+
+            <div class="col-lg-4 mb-4">
+
+              <!-- Illustrations -->
+              <div class="card shadow mb-4" style="height:720px">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Network Call</h6>
+                </div>
+                <div class="card-body" style='overflow:auto;height:400px;'>
+                  <div id="NetworkSteps"></div>
+                </div>
+
+
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Content Row -->
+          <div class="col-xl-12 col-md-6 mb-4" style="height:auto">
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Device Orientation</h6>
+
+              </div>
+              <div class="card-body">
+                <div id="placehere">
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Content Row -->
+          <div class="col-xl-12 col-md-6 mb-4" style="height:auto">
+            <div class="card shadow mb-4">
+              <div class="card-header py-3 align-content-center" style="text-align:center">
+
+                <h6 class="m-0 font-weight- text-gray-600">Iteration No  <label class="m-0 font-weight- text-gray-600" id="IterationNo"></label> out of <label class="m-0 font-weight- text-gray-600" id="IterationTotal"></label> At  <label class="m-0 font-weight-bolder text-gray-800" id="IterationTime"></label>  </h6>
+                </br></br>
+                <table width="100%">
+                  <tr>
+                    <td>  </td>
+                    <td>     <img src="~/Images/48-48-fbf48043394a34fe031a6b48af27debf.png" onClick="send_with_ajaxPrev()"></img>&nbsp;&nbsp;&nbsp;&nbsp;<img id="btn_play" src="~/Images/48-48-f3e9dae7cdd03d06915cadd830e75935.png" onClick="send_with_Play()"></img>&nbsp;&nbsp;&nbsp;&nbsp;<img src="~/Images/48-48-bb24400134a10e430ddc9f6fbe241c24.png" onClick="send_with_ajax()"></img></td>
+                    <td>     </td>
+                  </tr>
+
+                </table>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="row">
+
+            <!-- Area Chart -->
+
+            <div class="col-xl-4 col-lg-5">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Device Information</h6>
+
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <table>
+                    <tr>
+                      <td> <label class="text-xs font-weight-bold text-gray-900  mb-1">App Version</label> </td>
+                      <td>  <label class="text-xs   text-gray-700  mb-1" id="AppVersion"></label></td>
+                    </tr>
+                    <tr>
+                      <td><label class="text-xs font-weight-bold text-gray-900  mb-1">build Version </label></td>
+                      <td>  <label class="text-xs  text-gray-700  mb-1" id="version"></label></td>
+                    </tr>
+                    <tr>
+                      <td><label class="text-xs font-weight-bold text-gray-900  mb-1">Plateform </label></td>
+                      <td>  <label class="text-xs text-gray-700  mb-1" id="Plateform"></label></td>
+                    </tr>
+                    <tr>
+                      <td><label class="text-xs font-weight-bold text-gray-900  mb-1">Device Type</label> </td>
+                      <td>  <label class="text-xs  text-gray-700  mb-1" id="DeviceType"></label></td>
+
+                    </tr>
+                    <tr>
+                      <td><label class="text-xs font-weight-bold text-gray-900  mb-1">Device Name</label> </td>
+                      <td>  <label class="text-xs   text-gray-700  mb-1" id="DeviceName"></label></td>
+                    </tr>
+                    <tr>
+                      <td><label class="text-xs font-weight-bold text-gray-900  mb-1">Model</label> </td>
+                      <td>  <label class="text-xs  text-gray-700  mb-1" id="Model"></label></td>
+                    </tr>
+
+                    <tr>
+                      <td><label class="text-xs font-weight-bold text-gray-900  mb-1">Device Version </label></td>
+                      <td>  <label class="text-xs  text-gray-700  mb-1" id="DeviceVersion"></label></td>
+                    </tr>
+                    <tr>
+                      <td><label class="text-xs font-weight-bold text-gray-900  mb-1">Manufacturer</label> </td>
+                      <td>  <label class="text-xs   text-gray-700  mb-1" id="Manufacturer"></label></td>
+                    </tr>
+
+                    <tr>
+                      <td><label class="text-xs font-weight-bold text-gray-900  mb-1">Screen Resolution </label></td>
+                      <td>  <label class="text-xs  text-gray-700  mb-1" id="ScreenResolution"></label></td>
+                    </tr>
+
+                    <tr>
+                      <td><label class="text-xs font-weight-bold text-gray-900  mb-1">battery level </label></td>
+                      <td>  <label class="text-xs   text-gray-700  mb-1" id="batterylevel"></label></td>
+                    </tr>
+
+                    <tr>
+                      <td><label class="text-xs font-weight-bold text-gray-900  mb-1">Language </label> </td>
+                      <td>  <label class="text-xs  text-gray-700  mb-1" id="DeviceLang"></label></td>
+                    </tr>
+
+                    <tr>
+                      <td><label class="text-xs font-weight-bold text-gray-900  mb-1">Current Network</label> </td>
+                      <td>  <label class="text-xs   text-gray-900  mb-1" id="CurrentNetwork"></label></td>
+                    </tr>
+                    <tr>
+                      <td><label class="text-xs font-weight-bold text-gray-900  mb-1">Current Profile</label> </td>
+                      <td>  <label class="text-xs   text-gray-900  mb-1" id="CurrentProfile"></label></td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!-- Pie Chart -->
+            <div class="col-xl-8 col-lg-7">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Bug Overview</h6>
+
+                </div>
+                <!-- Card Body -->
+              
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-xl-6 col-md-6 mb-4" style="height:250px">
+                      <div class="card border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                          <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                              <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Bug Detail</div>
+                              <br />
+                              <table>
+                                <tr>
+                                  <td> <label class="text-xs font-weight-bold text-gray-900  mb-1">Bug Id</label> </td>
+                                  <td>  <label class="text-xs   text-gray-700  mb-1" id="BugId"></label></td>
+                                </tr>
+                                <tr>
+                                  <td><label class="text-xs font-weight-bold text-gray-900  mb-1">Bug Name </label></td>
+                                  <td>  <label class="text-xs  text-gray-700  mb-1" id="BugName"></label></td>
+                                </tr>
+                                <tr>
+                                  <td><label class="text-xs font-weight-bold text-gray-900  mb-1">Client Name </label></td>
+                                  <td>  <label class="text-xs text-gray-700  mb-1" id="ClientName"></label></td>
+                                </tr>
+                                <tr>
+                                  <td><label class="text-xs font-weight-bold text-gray-900  mb-1">Date</label> </td>
+                                  <td>  <label class="text-xs  text-gray-700  mb-1" id="Cdate"></label></td>
+
+                                </tr>
+                                <tr>
+                                  <td><label class="text-xs font-weight-bold text-gray-900  mb-1">Created By</label> </td>
+                                  <td>  <label class="text-xs  text-gray-700  mb-1" id="CreatedBy"></label></td>
+
+                                </tr>
+                              </table>
+                            </div>
+                            <div class="col-auto">
+                              
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-6 col-md-6 mb-4" style="height:250px">
+                      <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                          <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">CPU Uses</div>
+                              <div id="container" class="h5 mb-0 font-weight-bold text-gray-800"></div>
+                            </div>
+                            <div class="col-auto">
+                              <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-xl-6 col-md-6 mb-4" style="height:250px">
+                      <div class="card border-left-warning shadow h-100 py-2">
+                        <div class="card-body">
+                          <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Virtual Memory Uses</div>
+                              <div id="containervm" class="h5 mb-0 font-weight-bold text-gray-800"></div>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-6 col-md-6 mb-4" style="height:250px">
+                      <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                          <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Memory Uses</div>
+                              <div id="containermu" class="h5 mb-0 font-weight-bold text-gray-800"></div>
+
+                            </div>
+                            <div class="col-auto">
+                              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- /.container-fluid -->
+
+        </div>
+        </div>
+
+
+    <!--</div>-->
+
+</body>
+</html>

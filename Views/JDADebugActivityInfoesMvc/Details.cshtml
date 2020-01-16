@@ -1,0 +1,130 @@
+﻿@model screenshare3.Models.JDADebugActivityInfo
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>JDADebugActivityInfo</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreenShot)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreenShot)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ActivityData)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ActivityData)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.BuildData)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.BuildData)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AnalyticsInfo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AnalyticsInfo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.NetworkData)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.NetworkData)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DeviceOrientation)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DeviceOrientation)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.BugId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.BugId)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CurrentDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CurrentDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CPUUses)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CPUUses)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.MemoryUses)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MemoryUses)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DataFreme)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DataFreme)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.VirtualMemory)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.VirtualMemory)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SpaceUses)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SpaceUses)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="screenshare3Context-Web.config Connection String" description="screenshare3Context Connection String used in web.config by the application to access the database." defaultValue="Password=myoxynova@987;Persist Security Info=True;User ID=myoxynova;Initial Catalog=oxynovaDB;Data Source=118.67.248.175" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\1025642\\source\\repos\\screenShare\\screenshare3\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='screenshare3Context']/@connectionString" />
+  </parameter>
+</parameters>

@@ -1,0 +1,53 @@
+@model screenshare3.Models.ScreenImage
+
+@{
+  ViewBag.Title = "Details";
+}
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<h2>Details</h2>
+<script type="text/javascript">
+
+  $(document).ready(function () {
+    var idleInterval = setInterval("reloadPage()", 5000); // 20 Seconds
+  })
+
+  function reloadPage() {
+    location.reload();
+  }
+</script>
+<div>
+  <h4>ScreenImage</h4>
+  <hr />
+  <div id="divEmp">
+
+
+    @using (Ajax.BeginForm("EmployeeMaster", "Home", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "divEmp" }))
+    {
+      @Html.AntiForgeryToken()
+
+      <div class="form-horizontal">
+        <dl class="dl-horizontal">
+          <dt>
+            @Html.DisplayNameFor(model => model.imageScreen)
+          </dt>
+
+          <dd>
+            @Html.DisplayFor(model => model.imageScreen)
+          </dd>
+
+          <dt>
+            @Html.DisplayNameFor(model => model.Data)
+          </dt>
+
+          <dd>
+            @Html.DisplayFor(model => model.Data)
+          </dd>
+
+        </dl>
+      </div>
+      </div>
+      <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+      </p>

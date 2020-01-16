@@ -1,0 +1,113 @@
+﻿@model IEnumerable<screenshare3.Models.JDADebugActivityInfo>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ScreenShot)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActivityData)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BuildData)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnalyticsInfo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NetworkData)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeviceOrientation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BugId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CPUUses)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MemoryUses)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataFreme)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VirtualMemory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpaceUses)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScreenShot)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActivityData)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BuildData)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnalyticsInfo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NetworkData)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeviceOrientation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BugId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CPUUses)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MemoryUses)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataFreme)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VirtualMemory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpaceUses)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

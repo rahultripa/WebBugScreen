@@ -1,0 +1,157 @@
+@model screenshare3.Models.ScreenImageInfo
+
+@{
+  Layout = null;
+}
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+  var getQueryString = function ( field, url ) {
+	var href = url ? url : window.location.href;
+	var reg = new RegExp( '[?&]' + field + '=([^&#]*)', 'i' );
+	var string = reg.exec(href);
+	return string ? string[1] : null;
+};
+  $(document).ready(function () {
+   // var idleInterval = setInterval("reloadPage()", 5000); // 20 Seconds
+  })
+
+  function reloadPage() {
+   // location.reload();
+  }
+   var thisOne = getQueryString('bugId');
+    function send_with_ajaxPrev() {
+
+      document.getElementById("AppVersion").innerText = data.vession;
+    }
+
+</script>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width" />
+  <title>Details</title>
+</head>
+<body>
+
+  <table width="100%" border="1">
+
+    <tr>
+      <td colspan="4" bgcolor="#b5dcb3">
+        <h1>JDA Debug Application </h1>
+      </td>
+    </tr>
+
+    <tr>
+
+      <td>
+        <input title="Record Steps " type="button" value="Record Steps" />
+        <label class="text-xs   text-gray-700  mb-1" id="AppVersion"> PPP </label>
+        <img src="~/Images/48-48-fbf48043394a34fe031a6b48af27debf.png" onClick="send_with_ajaxPrev()">
+
+      </td>
+    </tr>
+    <tr valign="top" style="font-variant-caps:normal,all-petite-caps">
+      <td width="50">
+         Application Screen :  
+      </td>
+
+      @*<td >
+        Application Data :
+      </td>
+
+      <td>
+        Application Data flow :
+      </td>
+
+      <td width="100"">
+         Device Information : 
+      </td>*@
+    </tr>
+
+    <tr valign="top"  >
+      <td headers="Application Screen :  " >
+        <img src="@String.Format("data:image/jpg;base64,{0}", Model.Data)"   />
+      </td>
+
+      @*<td width="250" >
+        @Html.DisplayFor(model => model.textRecognisaion)
+      </td>
+
+      <td  width="250">
+        @Html.DisplayFor(model => model.imageScreen)
+      </td>
+
+      <td height="200">
+        <table width="100%" border="0">
+
+          <tr>
+            <td>    @Html.DisplayFor(model => model.deviceInfo.DeviceName) </td>
+          </tr>
+          <tr>
+            <td>    @Html.DisplayFor(model => model.deviceInfo.Model) </td>
+          </tr>
+          <tr>
+            <td>    @Html.DisplayFor(model => model.deviceInfo.DeviceType) </td>
+          </tr>
+          <tr>
+            <td>    @Html.DisplayFor(model => model.deviceInfo.Manufacturer) </td>
+          </tr>
+          <tr>
+            <td>    @Html.DisplayFor(model => model.deviceInfo.Platform) </td>
+          </tr>
+          <tr>
+            <td>    @Html.DisplayFor(model => model.deviceInfo.Version) </td>
+          </tr>
+        </table>
+      </td>*@
+    </tr>
+
+
+
+
+  </table>
+  @*<table style="width:100%">
+      <tr>
+        <th>Name</th>
+        <th colspan="2">Telephone</th>
+      </tr>
+      <tr>
+        <td><img src="@String.Format("data:image/jpg;base64,{0}", Model.Data)" height="320" width="180" /></td>
+        <td>55577854</td>
+        <td>55577855</td>
+      </tr>
+    </table>
+    <div class="container">
+      <h1>Three Column Layouts</h1>
+      First row with column number(4,4,4)
+      <div class="row">
+        <div class="col-md-4" style="background-color:#8dc1aa"> <img src="@String.Format("data:image/jpg;base64,{0}", Model.Data)" height="320" width="180" /></div>
+        <div class="col-md-4" style="background-color:#808080">   @Html.DisplayNameFor(model => model.textRecognisaion)</div>
+        <div class="col-md-4" style="background-color:#8dc1aa">column3: col-md-4</div>
+      </div>
+      Second row with column number(2,8,2)
+      <div class="row">
+        <div class="col-md-2" style="background-color:#cfa6e2">column4: col-md-2</div>
+        <div class="col-md-8" style="background-color:#faa76c">column5: col-md-8</div>
+        <div class="col-md-2" style="background-color:#cfa6e2">column6: col-md-2</div>
+      </div>
+      Third row with column number(3,6,3)
+      <div class="row">
+        <div class="col-md-3" style="background-color:#d2ee8b">column7: col-md-3</div>
+        <div class="col-md-6" style="background-color:#8dc1aa">column8: col-md-6</div>
+        <div class="col-md-3" style="background-color:#d2ee8b">column9: col-md-3</div>
+      </div>
+      Forth row with column number(3,7,2)
+      <div class="row">
+        <div class="col-md-3" style="background-color:#808080">column10: col-md-3</div>
+        <div class="col-md-7" style="background-color:#faa76c">column11: col-md-7</div>
+        <div class="col-md-2" style="background-color:#808080">column12: col-md-2</div>
+      </div>
+    </div>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>*@
+</body>
+</html>

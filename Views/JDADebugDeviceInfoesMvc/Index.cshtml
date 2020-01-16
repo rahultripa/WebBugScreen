@@ -1,0 +1,155 @@
+﻿@model IEnumerable<screenshare3.Models.JDADebugDeviceInfo>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DeviceName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeviceType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Manufacturer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DevicePlatform)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeviceVersion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BugId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vession)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.build)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ScreenResolution)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.batterylevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeviceLang)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrentNetwork)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrentProfile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxCPU)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxMemory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxDataFreme)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxVirtualMemory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxSpace)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeviceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeviceType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DevicePlatform)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeviceVersion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BugId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.vession)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.build)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScreenResolution)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.batterylevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeviceLang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentNetwork)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentProfile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxCPU)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxMemory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxDataFreme)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxVirtualMemory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxSpace)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
