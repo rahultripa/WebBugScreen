@@ -83,3 +83,5 @@ C:\Users\1025642\source\repos\screenShare\screenshare3\obj\Debug\screenshare3.cs
 C:\Users\1025642\source\repos\screenShare\screenshare3\obj\Debug\screenshare3.csproj.CopyComplete
 C:\Users\1025642\source\repos\screenShare\screenshare3\obj\Debug\screenshare3.dll
 C:\Users\1025642\source\repos\screenShare\screenshare3\obj\Debug\screenshare3.pdb
+C:\Users\rahul.tripathi\Documents\GitHub\WebBugScreen\obj\Debug\screenshare3.dll
+C:\Users\rahul.tripathi\Documents\GitHub\WebBugScreen\obj\Debug\screenshare3.pdb
